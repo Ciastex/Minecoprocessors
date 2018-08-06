@@ -294,8 +294,10 @@ public class Processor implements IProcessor {
         processDiv();
         return;
       case JMP:
-      case LOOP:
         processJmp();
+        return;
+      case LOOP:
+        processLoop();
         return;
       case JNZ:
       case JNE:
@@ -575,6 +577,16 @@ public class Processor implements IProcessor {
 
   void processJmp() {
     ip = labels.get(instruction[1]).address;
+  }
+
+  void processLoop() {
+    if(registers[Register.C.ordinal()] == 0)
+      zero = true;
+
+    if(!zero) {
+      registers[Register.C.ordinal()]--;
+      processJmp();
+    }
   }
 
   void processJz() {
