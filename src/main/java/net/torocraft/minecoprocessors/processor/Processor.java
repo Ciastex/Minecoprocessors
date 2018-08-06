@@ -281,6 +281,9 @@ public class Processor implements IProcessor {
       case ADD:
         processAdd();
         return;
+      case TEST:
+        processTest();
+        return;
       case AND:
         processAnd();
         return;
@@ -445,6 +448,13 @@ public class Processor implements IProcessor {
     byte z = (byte) (a & b);
     zero = z == 0;
     registers[instruction[1]] = z;
+  }
+
+  void processTest() {
+    byte a = getVariableOperand(0);
+    byte b = getVariableOperand(1);
+    byte z = (byte)(a & b);
+    zero = z == 0;
   }
 
   void processXor() {

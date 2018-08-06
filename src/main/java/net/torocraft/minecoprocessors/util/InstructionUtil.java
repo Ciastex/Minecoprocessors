@@ -58,6 +58,7 @@ public class InstructionUtil {
       case ROL:
       case SAL:
       case SAR:
+      case TEST:
         line.append(" ");
         line.append(compileVariableOperand(instruction, 0, labels));
         line.append(", ");
@@ -299,6 +300,7 @@ public class InstructionUtil {
       case ROL:
       case SAL:
       case SAR:
+      case TEST:
         instruction = parseDoubleOperands(line, labels);
         break;
 

@@ -25,6 +25,7 @@ public enum InstructionCode {
   SHR,
   PUSHA,
   POPA,
+  TEST,
   PUSH,
   POP,
   RET,
